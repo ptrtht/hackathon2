@@ -12,8 +12,8 @@ createRoot(document.getElementById('root')!).render(
         apiKey: import.meta.env['VITE_API_KEY'],
         // Having the two args below will make React Together immediately connect
         // to a new session. Remove them if you want users to start "offline"
-        // name: 'asd',
-        // password: 'verysecure123',
+        // name: import.meta.env['VITE_SESSION_NAME'],
+        // password: import.meta.env['VITE_SESSION_PASSWORD']
       }}
     >
       <App />

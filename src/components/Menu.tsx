@@ -9,7 +9,7 @@ export default function RestaurantMenu({ addOrder, ordersState, decrementOrder }
 
   return (
     <>
-      <div className='grid 2xl:grid-cols-3 md:grid-cols-2 gap-4'>
+      <div className='flex flex-wrap gap-4 p-4'>
         {restaurant?.menu.food.map((foodItem) => (
           <MenuFoodItem
             key={foodItem.id}
