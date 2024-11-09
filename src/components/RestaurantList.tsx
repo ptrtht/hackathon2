@@ -4,7 +4,7 @@ import RestaurantItem from './RestaurantItem'
 
 export default function RestaurantList() {
   return (
-    <div className='grid xl:grid-cols-3 md:grid-cols-2 gap-4'>
+    <div className='grid 2xl:grid-cols-3 md:grid-cols-2 gap-4'>
       {db.restaurants.map((restaurant) => (
         <RestaurantItem key={restaurant.restaurantId} restaurant={restaurant} />
       ))}
