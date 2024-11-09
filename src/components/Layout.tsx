@@ -2,16 +2,21 @@ import { Outlet } from 'react-router-dom'
 import TopBar from './TopBar'
 import OrderCart from './OrderCart'
 
-export default function Layout({ ordersState, addOrder, decrementOrder }) {
+export default function Layout({ ordersState, addOrder, decrementOrder, nameState }) {
   return (
-    <div className='h-screen flex-row'>
-    <TopBar />
-      <div className='flex-4'>
-        <Outlet />
+    <div className='drawer drawer-end h-screen flex-row'>
+      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content">
+        <TopBar nameState={nameState} />
+          <div className='flex-4 pt-16'>
+            <Outlet />
+          </div>
       </div>
-
-      <div id="" className='max-w-[450px] w-full'>
-        <OrderCart ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} checkout={false} />
+      <div className='drawer-side'>
+        <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+        <div className='max-w-[450px] w-full h-full flex align-middle'>
+          <OrderCart ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} checkout={false} />
+        </div>
       </div>
     </div>
   )

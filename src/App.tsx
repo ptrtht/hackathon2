@@ -13,6 +13,7 @@ import CreateSessionPage from '@components/CreateSessionPage'
 import JoinSessionPage from '@components/JoinSessionPage'
 import CheckoutPage from '@components/CheckoutPage'
 import PaidPage from '@components/PaidPage'
+import IndOrderCart from '@components/IndOrderCart'
 
 export default function App() {
   // const [count, set_count] = useStateTogether('counter_0', 0)
@@ -24,6 +25,7 @@ export default function App() {
   const [ordersState, setOrdersState] = useStateTogether<{ [id: string]: orderItemType }>('orders', {})
 
   const [nameState, setNameState] = useState('')
+
   const [sessionNameState, setSessionNameState] = useState('')
 
   const addOrder = (order: orderItemType) => {
@@ -71,18 +73,21 @@ export default function App() {
           <Route path='/session/create' element={<CreateSessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
           <Route path='/session/join/:id' element={<JoinSessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
         </Route>
-        <Route path='/restaurants' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+        <Route path='/restaurants' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<RestaurantList />} />
           <Route
             path='/restaurants/:id'
             element={<RestaurantMenu addOrder={addOrder} ordersState={ordersState} decrementOrder={decrementOrder} />}
           />
         </Route>
-        <Route path='/checkout' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+        <Route path='/checkout' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<CheckoutPage ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />} />
         </Route>
-        <Route path='/checkout/success' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+        <Route path='/checkout/success' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<PaidPage />} />
+        </Route>
+        <Route path='/checkout/split' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+          <Route index element={<IndOrderCart nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder}/>} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,20 +1,18 @@
 import { useNavigate } from "react-router-dom";
 
-export default function OrderCart({ ordersState, addOrder, decrementOrder, checkout }) {
+export default function IndOrderCart({ ordersState, addOrder, decrementOrder, nameState }) {
   const navigate = useNavigate();
-
+  let orderKeys = Object.keys(ordersState).filter((key) => ordersState[key].culprit == nameState)
   return (
-    <div className='bg-base-200 rounded-xl min-w-full p-3'>
-      {!checkout &&
-        <label for="my-drawer" className="btn btn-block btn-outline drawer-button">
-          <i className="pi pi-arrow-left" style={{ fontSize: '1rem' }}></i>
-        </label>
-      }
+<div className="flex align-center justify-center items-center h-full">
+  <div className="card bg-base-200  w-full h-fit md:m-24 mt-24 md:shadow-xl">
+    <div className="card-body items-center space-y-3">
+    <div className='bg-base-200 rounded-xl min-w-full'>
       {/* list of orders */}
       <div className='p-4'>
-        <h1 className='text-2xl font-bold'>Group Cart</h1>
+        <h1 className='text-2xl font-bold'>Your Individual Cart</h1>
         <ul>
-          {Object.keys(ordersState).map((key) => {
+          {orderKeys.map((key) => {
             const order = ordersState[key]
             return (
               <>
@@ -40,7 +38,7 @@ export default function OrderCart({ ordersState, addOrder, decrementOrder, check
                       +
                     </button>
                   </span>
-                  <span className='font-semibold'>${Number(order.price * order.quantity).toFixed(2)}</span>
+                  <span className='font-semibold'>${order.price * order.quantity}</span>
                 </li>
               </>
             )
@@ -55,25 +53,25 @@ export default function OrderCart({ ordersState, addOrder, decrementOrder, check
         <div className='col-span-4 '>Total:</div>
         {/* no items */}
         <div className='col-span-2 flex justify-center'>
-          {Object.keys(ordersState).reduce((acc, key) => {
+          {orderKeys.reduce((acc, key) => {
             return acc + ordersState[key].quantity
           }, 0)}
         </div>
         {/* total $$ */}
         <div className='font-semibold'>
           $
-          {Object.keys(ordersState).reduce((acc, key) => {
+          {orderKeys.reduce((acc, key) => {
             return Number((acc + ordersState[key].quantity * ordersState[key].price).toFixed(2))
           }, 0)}
         </div>
       </div>
-
-      {/* checkout */}
-      {!checkout &&
-        <div className='p-4 flex flex-col mx-10'>
-          <label for="my-drawer" className='btn btn-content btn-outline' onClick={() => navigate("/checkout")}>Checkout</label>
-        </div>
-      }
     </div>
+    <button
+      className="btn btn-primary btn-block mt-10"
+      onClick={() => navigate("/checkout/success?m=Thank you for choosing Slicr.")}
+    >Pay</button>
+    </div>
+  </div>
+</div>
   )
 }

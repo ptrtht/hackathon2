@@ -11,10 +11,11 @@ export default function CheckoutPage({ ordersState, addOrder, decrementOrder }) 
           <OrderCart ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} checkout={true} />
           <button
             className="btn btn-primary btn-block mt-10"
-            onClick={() => navigate("success")}
+            onClick={() => navigate("success?m=Thank you for choosing Slicr.")}
           >Pay</button>
           <button
             className="btn btn-primary btn-block"
+            onClick={() => navigate("split")}
           >Split the bill</button>
           <button
             className="btn btn-primary btn-block"
