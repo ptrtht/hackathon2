@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "postcss-cli": "^11.0.0",
+    "qrcode-generator": "^1.4.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-qr-code": "^2.0.15",
     "react-together": "0.2.0"
   },
   "devDependencies": {

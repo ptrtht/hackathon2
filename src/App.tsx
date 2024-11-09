@@ -9,14 +9,13 @@ import * as db from './db.json'
 
 import LoginPage from '@components/LoginPage'
 import { useState } from 'react'
-import SessionPage from '@components/SessionPage'
+import CreateSessionPage from '@components/CreateSessionPage'
+import JoinSessionPage from '@components/JoinSessionPage'
 
 export default function App() {
   // const [count, set_count] = useStateTogether('counter_0', 0)
 
-  type orderItemType = (
-    | (typeof db.restaurants)[number]['menu']['food'][number]
-  ) & { quantity: number }
+  type orderItemType = (typeof db.restaurants)[number]['menu']['food'][number] & { quantity: number }
 
   const [ordersState, setOrdersState] = useStateTogether<{ [id: string]: orderItemType }>('orders', {})
 
@@ -60,18 +59,19 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='/'>
+          <Route index element={<LoginPage nameState={nameState} setNameState={setNameState} />} />
+        </Route>
+        <Route path='/session'>
+          <Route path='/session/create' element={<CreateSessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
+          <Route path='/session/join/:id' element={<JoinSessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
+        </Route>
         <Route path='/restaurants' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<RestaurantList />} />
           <Route
             path='/restaurants/:id'
             element={<RestaurantMenu addOrder={addOrder} ordersState={ordersState} decrementOrder={decrementOrder} />}
           />
-        </Route>
-        <Route path='/' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
-          <Route index element={<LoginPage nameState={nameState} setNameState={setNameState} />} />
-        </Route>
-        <Route path='/session' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
-          <Route index element={<SessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
         </Route>
       </Routes>
     </BrowserRouter>
