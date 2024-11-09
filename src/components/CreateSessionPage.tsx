@@ -49,7 +49,7 @@ export default function CreateSessionPage({ nameState, setNameState }: { nameSta
             <button
               className='btn btn-primary w-full'
               onClick={() => {
-                if (nameState != '') navigate('/restaurants')
+                window.location.href = link
               }}
             >
               Next

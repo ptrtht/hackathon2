@@ -16,6 +16,10 @@ export default function LoginPage({ nameState, setNameState }: { nameState: stri
   const isTogether = !!(name && password)
   console.log('isTogether', isTogether)
 
+  if (!isTogether) {
+    navigate('/session/create')
+  }
+
   console.log('redirect', redirect)
 
   return (
