@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import { useIsTogether } from 'react-together'
+import { useIsTogether, CroquetReact } from 'react-together'
+
+const { useSessionParams } = CroquetReact
 
 export default function LoginPage({ nameState, setNameState }: { nameState: string; setNameState: (a: string) => void }) {
   const navigate = useNavigate()
@@ -7,12 +9,12 @@ export default function LoginPage({ nameState, setNameState }: { nameState: stri
   let redirect = '/session/create'
 
   // check session connection
-  const isTogether = useIsTogether()
   redirect = '/restaurants'
 
-  if (!isTogether) {
-    navigate('/session/create')
-  }
+  // const isTogether = useIsTogether()
+  const { name, password } = useSessionParams()
+  const isTogether = !!(name && password)
+  console.log('isTogether', isTogether)
 
   console.log('redirect', redirect)
 
