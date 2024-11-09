@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')!).render(
         // Having the two args below will make React Together immediately connect
         // to a new session. Remove them if you want users to start "offline"
         // name: 'asd',
-        // password: 'asd',
+        // password: 'verysecure123',
       }}
     >
       <App />

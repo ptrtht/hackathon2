@@ -5,23 +5,32 @@ import './index.css'
 import RestaurantMenu from '@components/Menu'
 import Layout from '@components/Layout'
 import { useStateTogether } from 'react-together'
+import * as db from './db.json'
 
 export default function App() {
   // const [count, set_count] = useStateTogether('counter_0', 0)
 
-  const [ordersState, setOrdersState] = useStateTogether('orders', {})
+  type orderItemType = (
+    | (typeof db.restaurants)[number]['menu']['food'][number]
+    | (typeof db.restaurants)[number]['menu']['beverages'][number]
+  ) & { quantity: number }
 
-  const addOrder = (order: { name: string }) => {
+  const [ordersState, setOrdersState] = useStateTogether<{ [id: string]: orderItemType }>('orders', {})
+
+  const addOrder = (order: orderItemType) => {
+
+    console.log(order)
+
     setOrdersState({
       ...ordersState,
-      order,
+      [order.id]: order,
     })
   }
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/restaurants' element={<Layout />}>
+        <Route path='/restaurants' element={<Layout ordersState={ordersState} />}>
           <Route index element={<RestaurantList />} />
           <Route path='/restaurants/:id' element={<RestaurantMenu addOrder={addOrder} />} />
         </Route>

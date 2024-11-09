@@ -1,0 +1,292 @@
+{
+  "restaurants": [
+    {
+      "restaurantId": "BRLC001",
+      "name": "Burrito Loco",
+      "cuisine": "Mexican",
+      "imageUrl": "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d",
+      "menu": {
+        "food": [
+          {
+            "id": "BRLC001_F001",
+            "name": "Classic Burrito",
+            "description": "Rice, beans, cheese, guacamole, and your choice of meat",
+            "price": 12.99,
+            "imageUrl": "https://images.unsplash.com/photo-1584031036380-3fb6f2d51903"
+          },
+          {
+            "id": "BRLC001_F002",
+            "name": "Quesadilla Supreme",
+            "description": "Tortilla filled with melted cheese, meat, and vegetables",
+            "price": 10.99,
+            "imageUrl": "https://images.unsplash.com/photo-1599974579688-8dbdd335c77f"
+          },
+          {
+            "id": "BRLC001_F003",
+            "name": "Nachos Grande",
+            "description": "Tortilla chips with melted cheese, jalapeños, and toppings",
+            "price": 9.99,
+            "imageUrl": "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d"
+          },
+          {
+            "id": "BRLC001_F004",
+            "name": "Taco Trio",
+            "description": "Three tacos with different fillings",
+            "price": 11.99,
+            "imageUrl": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b"
+          },
+          {
+            "id": "BRLC001_F005",
+            "name": "Enchiladas",
+            "description": "Three corn tortillas filled with chicken and topped with sauce",
+            "price": 13.99,
+            "imageUrl": "https://images.unsplash.com/photo-1534352956036-cd81e27dd615"
+          },
+          {
+            "id": "BRLC001_F006",
+            "name": "Mexican Bowl",
+            "description": "Rice bowl with beans, vegetables, and protein of choice",
+            "price": 11.99,
+            "imageUrl": "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7"
+          }
+        ],
+        "beverages": [
+          {
+            "id": "BRLC001_B001",
+            "name": "Margarita",
+            "description": "Classic lime margarita",
+            "price": 8.99,
+            "imageUrl": "https://images.unsplash.com/photo-1556855810-ac404aa91e85"
+          },
+          {
+            "id": "BRLC001_B002",
+            "name": "Mexican Cola",
+            "description": "Traditional Mexican cola",
+            "price": 3.99,
+            "imageUrl": "https://images.unsplash.com/photo-1581006852262-e4307cf6283a"
+          },
+          {
+            "id": "BRLC001_B003",
+            "name": "Horchata",
+            "description": "Traditional rice drink",
+            "price": 4.99,
+            "imageUrl": "https://images.pexels.com/photos/4919738/pexels-photo-4919738.jpeg"
+          },
+          {
+            "id": "BRLC001_B004",
+            "name": "Jamaica Water",
+            "description": "Hibiscus iced tea",
+            "price": 3.99,
+            "imageUrl": "https://images.unsplash.com/photo-1556679343-c7306c1976bc"
+          },
+          {
+            "id": "BRLC001_B005",
+            "name": "Corona Beer",
+            "description": "Mexican lager beer",
+            "price": 5.99,
+            "imageUrl": "https://images.unsplash.com/photo-1608270586620-248524c67de9"
+          },
+          {
+            "id": "BRLC001_B006",
+            "name": "Agua Fresca",
+            "description": "Fresh fruit water of the day",
+            "price": 3.99,
+            "imageUrl": "https://images.unsplash.com/photo-1437418747212-8d9709afab22"
+          }
+        ]
+      }
+    },
+    {
+      "restaurantId": "PPZA001",
+      "name": "Papa Pizza",
+      "cuisine": "Italian",
+      "imageUrl": "https://images.unsplash.com/photo-1520201163981-8cc95007dd2a",
+      "menu": {
+        "food": [
+          {
+            "id": "PPZA001_F001",
+            "name": "Margherita Pizza",
+            "description": "Tomato sauce, mozzarella, and basil",
+            "price": 14.99,
+            "imageUrl": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca"
+          },
+          {
+            "id": "PPZA001_F002",
+            "name": "Pepperoni Pizza",
+            "description": "Classic pepperoni with extra cheese",
+            "price": 16.99,
+            "imageUrl": "https://images.unsplash.com/photo-1628840042765-356cda07504e"
+          },
+          {
+            "id": "PPZA001_F003",
+            "name": "Quattro Formaggi",
+            "description": "Four cheese pizza",
+            "price": 17.99,
+            "imageUrl": "https://images.unsplash.com/photo-1513104890138-7c749659a591"
+          },
+          {
+            "id": "PPZA001_F004",
+            "name": "Garlic Bread",
+            "description": "Fresh bread with garlic butter",
+            "price": 5.99,
+            "imageUrl": "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c"
+          },
+          {
+            "id": "PPZA001_F005",
+            "name": "Caesar Salad",
+            "description": "Classic caesar salad with croutons",
+            "price": 8.99,
+            "imageUrl": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9"
+          },
+          {
+            "id": "PPZA001_F006",
+            "name": "Calzone",
+            "description": "Folded pizza with ham and mushrooms",
+            "price": 15.99,
+            "imageUrl": "https://images.pexels.com/photos/6072095/pexels-photo-6072095.jpeg"
+          }
+        ],
+        "beverages": [
+          {
+            "id": "PPZA001_B001",
+            "name": "House Red Wine",
+            "description": "Italian red wine",
+            "price": 6.99,
+            "imageUrl": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3"
+          },
+          {
+            "id": "PPZA001_B002",
+            "name": "Sparkling Water",
+            "description": "Italian sparkling mineral water",
+            "price": 3.99,
+            "imageUrl": "https://images.unsplash.com/photo-1606168094336-48f555b4ba00"
+          },
+          {
+            "id": "PPZA001_B003",
+            "name": "Cola",
+            "description": "Classic cola",
+            "price": 2.99,
+            "imageUrl": "https://images.unsplash.com/photo-1554866585-cd94860890b7"
+          },
+          {
+            "id": "PPZA001_B004",
+            "name": "Italian Beer",
+            "description": "Peroni beer",
+            "price": 5.99,
+            "imageUrl": "https://images.unsplash.com/photo-1608270586620-248524c67de9"
+          },
+          {
+            "id": "PPZA001_B005",
+            "name": "Espresso",
+            "description": "Single shot espresso",
+            "price": 2.99,
+            "imageUrl": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04"
+          },
+          {
+            "id": "PPZA001_B006",
+            "name": "Cappuccino",
+            "description": "Classic Italian cappuccino",
+            "price": 3.99,
+            "imageUrl": "https://images.unsplash.com/photo-1517256064527-09c73fc73e38"
+          }
+        ]
+      }
+    },
+    {
+      "restaurantId": "SUSH001",
+      "name": "Bad 22h Sushi",
+      "cuisine": "Japanese",
+      "imageUrl": "https://images.unsplash.com/photo-1617196701537-7329482cc9fe",
+      "menu": {
+        "food": [
+          {
+            "id": "SUSH001_F001",
+            "name": "California Roll",
+            "description": "Crab, avocado, cucumber roll",
+            "price": 12.99,
+            "imageUrl": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c"
+          },
+          {
+            "id": "SUSH001_F002",
+            "name": "Salmon Nigiri",
+            "description": "Fresh salmon over rice (2 pieces)",
+            "price": 8.99,
+            "imageUrl": "https://images.unsplash.com/photo-1583623025817-d180a2221d0a"
+          },
+          {
+            "id": "SUSH001_F003",
+            "name": "Tempura Roll",
+            "description": "Shrimp tempura roll with vegetables",
+            "price": 14.99,
+            "imageUrl": "https://images.unsplash.com/photo-1534482421-64566f976cfa"
+          },
+          {
+            "id": "SUSH001_F004",
+            "name": "Miso Soup",
+            "description": "Traditional Japanese soup",
+            "price": 3.99,
+            "imageUrl": "https://images.unsplash.com/photo-1578020190125-f4f7c18bc9cb"
+          },
+          {
+            "id": "SUSH001_F005",
+            "name": "Edamame",
+            "description": "Steamed soybeans with salt",
+            "price": 4.99,
+            "imageUrl": "https://images.unsplash.com/photo-1542379653-b204d3f77d93"
+          },
+          {
+            "id": "SUSH001_F006",
+            "name": "Dragon Roll",
+            "description": "Eel and cucumber roll topped with avocado",
+            "price": 16.99,
+            "imageUrl": "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56"
+          }
+        ],
+        "beverages": [
+          {
+            "id": "SUSH001_B001",
+            "name": "Green Tea",
+            "description": "Traditional Japanese green tea",
+            "price": 2.99,
+            "imageUrl": "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5"
+          },
+          {
+            "id": "SUSH001_B002",
+            "name": "Sake",
+            "description": "Traditional rice wine",
+            "price": 7.99,
+            "imageUrl": "https://images.unsplash.com/photo-1531603071569-0dd65ad72d53"
+          },
+          {
+            "id": "SUSH001_B003",
+            "name": "Asahi Beer",
+            "description": "Japanese beer",
+            "price": 5.99,
+            "imageUrl": "https://images.unsplash.com/photo-1630461394846-d5fbe0399c63"
+          },
+          {
+            "id": "SUSH001_B004",
+            "name": "Ramune",
+            "description": "Japanese soda",
+            "price": 3.99,
+            "imageUrl": "https://images.pexels.com/photos/14067159/pexels-photo-14067159.jpeg"
+          },
+          {
+            "id": "SUSH001_B005",
+            "name": "Oolong Tea",
+            "description": "Chinese oolong tea",
+            "price": 2.99,
+            "imageUrl": "https://images.unsplash.com/photo-1558160074-4d7d8bdf4256"
+          },
+          {
+            "id": "SUSH001_B006",
+            "name": "Water",
+            "description": "Bottled still water",
+            "price": 1.99,
+            "imageUrl": "https://images.unsplash.com/photo-1560493676-04071c5f467b"
+          }
+        ]
+      }
+    }
+  ]
+}
