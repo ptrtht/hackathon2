@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useIsTogether } from 'react-together'
 
@@ -9,9 +8,10 @@ export default function LoginPage({ nameState, setNameState }: { nameState: stri
 
   // check session connection
   const isTogether = useIsTogether()
+  redirect = '/restaurants'
 
-  if (isTogether) {
-    redirect = '/restaurants'
+  if (!isTogether) {
+    navigate('/session/create')
   }
 
   console.log('redirect', redirect)
