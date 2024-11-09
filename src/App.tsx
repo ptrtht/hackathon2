@@ -11,11 +11,15 @@ import LoginPage from '@components/LoginPage'
 import { useState } from 'react'
 import CreateSessionPage from '@components/CreateSessionPage'
 import JoinSessionPage from '@components/JoinSessionPage'
+import CheckoutPage from '@components/CheckoutPage'
+import PaidPage from '@components/PaidPage'
 
 export default function App() {
   // const [count, set_count] = useStateTogether('counter_0', 0)
 
-  type orderItemType = (typeof db.restaurants)[number]['menu']['food'][number] & { quantity: number }
+  type orderItemType = (
+    | (typeof db.restaurants)[number]['menu']['food'][number]
+  ) & { quantity: number, culprit?: string }
 
   const [ordersState, setOrdersState] = useStateTogether<{ [id: string]: orderItemType }>('orders', {})
 
@@ -28,6 +32,7 @@ export default function App() {
     // if no quantity exists, set it to 1
     if (!order.quantity || order.quantity === 0) {
       order.quantity = 1
+      order.culprit = nameState
     }
 
     // if order already exists, increment quantity
@@ -72,6 +77,12 @@ export default function App() {
             path='/restaurants/:id'
             element={<RestaurantMenu addOrder={addOrder} ordersState={ordersState} decrementOrder={decrementOrder} />}
           />
+        </Route>
+        <Route path='/checkout' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+          <Route index element={<CheckoutPage ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />} />
+        </Route>
+        <Route path='/checkout/success' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+          <Route index element={<PaidPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

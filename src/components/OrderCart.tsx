@@ -1,4 +1,8 @@
-export default function OrderCart({ ordersState, addOrder, decrementOrder }) {
+import { useNavigate } from "react-router-dom";
+
+export default function OrderCart({ ordersState, addOrder, decrementOrder, checkout }) {
+  const navigate = useNavigate();
+
   return (
     <div className='bg-base-200 rounded-xl min-w-full'>
       {/* list of orders */}
@@ -60,9 +64,11 @@ export default function OrderCart({ ordersState, addOrder, decrementOrder }) {
       </div>
 
       {/* checkout */}
-      <div className='p-4 flex flex-col mx-10'>
-        <button className='btn btn-content btn-outline' disabled>Checkout</button>
-      </div>
+      {!checkout &&
+        <div className='p-4 flex flex-col mx-10'>
+          <button className='btn btn-content btn-outline' onClick={() => navigate("/checkout")}>Checkout</button>
+        </div>
+      }
     </div>
   )
 }

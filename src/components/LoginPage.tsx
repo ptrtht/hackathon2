@@ -17,7 +17,7 @@ export default function LoginPage({ nameState, setNameState }: { nameState: stri
   console.log('redirect', redirect)
 
   return (
-    <div className='flex align-center justify-center items-center h-full'>
+    <div className='flex align-center justify-center items-center h-full w-full'>
       <div className='card bg-base-200  w-full h-fit md:w-[600px] mt-24 md:shadow-xl'>
         <div className='card-body items-center'>
           <h1 className='card-title w-full justify-center'>Welcome to</h1>
