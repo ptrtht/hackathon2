@@ -7,15 +7,21 @@ import Layout from '@components/Layout'
 import { useStateTogether } from 'react-together'
 import * as db from './db.json'
 
+import LoginPage from '@components/LoginPage'
+import { useState } from 'react'
+import SessionPage from '@components/SessionPage'
+
 export default function App() {
   // const [count, set_count] = useStateTogether('counter_0', 0)
 
   type orderItemType = (
     | (typeof db.restaurants)[number]['menu']['food'][number]
-    | (typeof db.restaurants)[number]['menu']['beverages'][number]
   ) & { quantity: number }
 
   const [ordersState, setOrdersState] = useStateTogether<{ [id: string]: orderItemType }>('orders', {})
+
+  const [nameState, setNameState] = useState('')
+  const [sessionNameState, setSessionNameState] = useState('')
 
   const addOrder = (order: orderItemType) => {
     console.log(order)
@@ -60,6 +66,12 @@ export default function App() {
             path='/restaurants/:id'
             element={<RestaurantMenu addOrder={addOrder} ordersState={ordersState} decrementOrder={decrementOrder} />}
           />
+        </Route>
+        <Route path='/' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+          <Route index element={<LoginPage nameState={nameState} setNameState={setNameState} />} />
+        </Route>
+        <Route path='/session' element={<Layout ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+          <Route index element={<SessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
         </Route>
       </Routes>
     </BrowserRouter>

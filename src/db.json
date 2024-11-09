@@ -48,9 +48,7 @@
             "description": "Rice bowl with beans, vegetables, and protein of choice",
             "price": 11.99,
             "imageUrl": "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7"
-          }
-        ],
-        "beverages": [
+          },
           {
             "id": "BRLC001_B001",
             "name": "Margarita",
@@ -144,9 +142,7 @@
             "description": "Folded pizza with ham and mushrooms",
             "price": 15.99,
             "imageUrl": "https://images.pexels.com/photos/6072095/pexels-photo-6072095.jpeg"
-          }
-        ],
-        "beverages": [
+          },
           {
             "id": "PPZA001_B001",
             "name": "House Red Wine",
@@ -240,9 +236,7 @@
             "description": "Eel and cucumber roll topped with avocado",
             "price": 16.99,
             "imageUrl": "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56"
-          }
-        ],
-        "beverages": [
+          },
           {
             "id": "SUSH001_B001",
             "name": "Green Tea",
