@@ -25,6 +25,15 @@ export default function App() {
   const [ordersState, setOrdersState] = useStateTogether<{ [id: string]: orderItemType }>('orders', {})
 
   const [nameState, setNameState] = useState('')
+  const [nameListState, setNameListState] = useStateTogether('names', [])
+
+  const addName = (username: string) => {
+    setNameState(username)
+    setNameListState([
+      ...nameListState,
+      username
+    ])
+  }
 
   const [sessionNameState, setSessionNameState] = useState('')
 
@@ -67,7 +76,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/'>
-          <Route index element={<LoginPage nameState={nameState} setNameState={setNameState} />} />
+          <Route index element={<LoginPage nameState={nameState} setNameState={addName} />} />
         </Route>
         <Route path='/session'>
           <Route path='/session/create' element={<CreateSessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
