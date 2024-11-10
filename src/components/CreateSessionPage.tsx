@@ -33,7 +33,7 @@ export default function CreateSessionPage({ nameState, setNameState }: { nameSta
         <div className='card-body items-center'>
           <h1 className='card-title w-full justify-center'>Start a session</h1>
           <figure>
-            <img src='https://media.discordapp.net/attachments/1304748717076774912/1304857526164131961/Untitled.png?ex=6730eac5&is=672f9945&hm=2992ee4439321828261ed3706fc179d7772836c262020fdd1711e418f320bd0f&=&format=webp&quality=lossless' />
+            <img src='https://media.discordapp.net/attachments/1304748717076774912/1304857526164131961/Untitled.png?ex=67323c45&is=6730eac5&hm=06886976f4b03a304d2c6c67cd4a7ca67b852e5f94ff4adda27cbbac63816921&=&format=webp&quality=lossless' />
           </figure>
 
           <div className='my-10 flex flex-col items-center justify-center gap-2'>
