@@ -15,8 +15,6 @@ export default function CreateSessionPage({ nameState, setNameState }: { nameSta
 
   const link = joinUrl.href
 
-  console.log('joinUrl.href', joinUrl.href)
-
   useEffect(() => {
     // Code to run after component has loaded
 

@@ -5,8 +5,6 @@ export default function RestaurantMenu({ addOrder, ordersState, decrementOrder }
   const restaurant_id = loc[loc.length - 1]
   const restaurant = db.restaurants.find((r) => r.restaurantId === restaurant_id)
 
-  console.log(restaurant)
-
   return (
     <>
       <div className='flex flex-wrap gap-4 p-4'>

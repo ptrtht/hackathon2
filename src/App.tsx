@@ -18,11 +18,13 @@ import IndOrderCart from '@components/IndOrderCart'
 import RoulettePage from '@components/RoulettePage'
 
 export default function App() {
-  // const [count, set_count] = useStateTogether('counter_0', 0)
-
   type orderItemType = (
     | (typeof db.restaurants)[number]['menu']['food'][number]
-  ) & { quantity: number, culprit?: string }
+  ) & { quantity: number, culprit: {[userName: string]: number} }
+
+  type modificationType = (
+    | orderItemType['modifications'][keyof orderItemType['modifications']]
+  ) & { quantity: number }
 
   const [ordersState, setOrdersState] = useStateTogether<{ [id: string]: orderItemType }>('orders', {})
 
@@ -40,17 +42,32 @@ export default function App() {
   const [sessionNameState, setSessionNameState] = useState('')
 
   const addOrder = (order: orderItemType) => {
-    console.log(order)
-
     // if no quantity exists, set it to 1
     if (!order.quantity || order.quantity === 0) {
       order.quantity = 1
-      order.culprit = nameState
+      order.culprit = {}
+      order.culprit[nameState] = 1
     }
 
     // if order already exists, increment quantity
     if (ordersState[order.id]) {
       order.quantity = ordersState[order.id].quantity + 1
+      order.culprit[nameState] = (ordersState[order.id].culprit[nameState] ?? 0) + 1
+    }
+
+    setOrdersState({
+      ...ordersState,
+      [order.id]: order,
+    })
+  }
+
+  const incrementModification = (order: orderItemType, modification: modificationType) => {
+    // if no quantity exists, set it to 1 and add to order
+    if (!modification.quantity || modification.quantity === 0) {
+      order.modifications[modification.id].quantiy = 1
+    } else {
+      // if modification already exists, increment quantity
+      order.modifications[modification.id] = modification.quantity + 1
     }
 
     setOrdersState({
@@ -92,7 +109,7 @@ export default function App() {
           />
         </Route>
         <Route path='/checkout' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
-          <Route index element={<CheckoutPage ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />} />
+          <Route index element={<CheckoutPage nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />} />
         </Route>
         <Route path='/checkout/success' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<PaidPage />} />

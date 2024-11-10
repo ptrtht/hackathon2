@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function OrderCart({ nameState, ordersState, addOrder, decrementOrder, checkout }) {
   const navigate = useNavigate();
+  let orderKeys = Object.keys(ordersState).filter((key) => ordersState[key].culprit[nameState] > 0)
 
   return (
     <div className='bg-base-200 rounded-xl min-w-full p-3'>
@@ -15,6 +16,42 @@ export default function OrderCart({ nameState, ordersState, addOrder, decrementO
         </div>
         </>
       }
+
+      <div className='p-4'>
+        <h1 className='text-2xl font-bold'>Your Individual Cart</h1>
+        <ul>
+          {orderKeys.map((key) => {
+            const order = ordersState[key]
+            return (
+              <li key={key + '2'} className='flex grid grid-cols-7 mt-2'>
+                <span className='col-span-3'>{order.name}</span>
+                <span>{order.price}</span>
+                <span className='flex justify-center gap-2 col-span-2'>
+                  <button
+                    className='btn btn-xs btn-outline'
+                    onClick={() => {
+                      decrementOrder(order)
+                    }}
+                  >
+                    -
+                  </button>
+                  {ordersState[key].culprit[nameState]}
+                  <button
+                    className='btn btn-xs btn-outline'
+                    onClick={() => {
+                      addOrder(order)
+                    }}
+                  >
+                    +
+                  </button>
+                </span>
+                <span className='font-semibold'>${order.price * ordersState[key].culprit[nameState]}</span>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+
       {/* list of orders */}
       <div className='p-4'>
         <h1 className='text-2xl font-bold'>Group Cart</h1>

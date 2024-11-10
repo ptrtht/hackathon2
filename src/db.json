@@ -12,7 +12,7 @@
             "name": "Classic Burrito",
             "description": "Rice, beans, cheese, guacamole, and your choice of meat",
             "price": 12.99,
-            "imageUrl": "https://images.unsplash.com/photo-1584031036380-3fb6f2d51903"
+            "imageUrl": "https://www.onceuponachef.com/images/2018/03/Breakfast-Burritos.jpg"
           },
           {
             "id": "BRLC001_F002",
@@ -102,6 +102,20 @@
       "menu": {
         "food": [
           {
+            "id": "PPZA001_F007",
+            "name": "Custom Pizza",
+            "description": "Make your own pizza!",
+            "price": 4.99,
+            "imageUrl": "https://www.variantoptionproductoption.com/cdn/shop/products/pizza_PNG7149-1.png",
+            "modifications": {
+              "PPZA001_F007_I001": {
+                "id": "PPZA001_F007_I001",
+                "name": "Extra Cheese",
+                "price": 1.99
+              }
+            }
+          },
+          {
             "id": "PPZA001_F001",
             "name": "Margherita Pizza",
             "description": "Tomato sauce, mozzarella, and basil",
@@ -127,7 +141,7 @@
             "name": "Garlic Bread",
             "description": "Fresh bread with garlic butter",
             "price": 5.99,
-            "imageUrl": "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c"
+            "imageUrl": "https://www.ambitiouskitchen.com/wp-content/uploads/2023/02/Garlic-Bread-4.jpg"
           },
           {
             "id": "PPZA001_F005",
@@ -155,7 +169,7 @@
             "name": "Sparkling Water",
             "description": "Italian sparkling mineral water",
             "price": 3.99,
-            "imageUrl": "https://images.unsplash.com/photo-1606168094336-48f555b4ba00"
+            "imageUrl": "https://dam.northwell.edu/m/6354821b672e59ca/Drupal-TheWell_sparkling-water-hydration_GettyImages-534110326.jpg"
           },
           {
             "id": "PPZA001_B003",

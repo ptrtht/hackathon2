@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 export default function RoulettePage({ ordersState, addOrder, decrementOrder, nameListState, nameState }) {
   const [displayedName, setDisplayedName] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isFinished, setFinished] = useState(false);
+
+  const navitage = useNavigate();
 
   useEffect(() => {
     let interval;
@@ -32,6 +35,7 @@ export default function RoulettePage({ ordersState, addOrder, decrementOrder, na
       // Finalize with a randomly chosen name
       const finalIndex = Math.floor(Math.random() * nameListState.length);
       setDisplayedName(nameListState[finalIndex]);
+      setFinished(true)
     }, 3000);
   };
   
@@ -70,6 +74,7 @@ export default function RoulettePage({ ordersState, addOrder, decrementOrder, na
       </div>
 
       {/* Start button */}
+      {!isFinished ? 
       <button
         onClick={startSortition}
         className="mt-4 btn btn-primary"
@@ -77,6 +82,14 @@ export default function RoulettePage({ ordersState, addOrder, decrementOrder, na
       >
         {isAnimating ? "Shuffling..." : "Start Spinning"}
       </button>
+      :
+      <button
+        className="mt-4 btn btn-primary"
+        onClick={() => navitage("/checkout/success?m=You lost the roulette :( Thank you for your purchase!")}
+        >
+          Pay all.
+        </button>
+      }
 
       {/* Display the full list */}
       <div className="mt-6">

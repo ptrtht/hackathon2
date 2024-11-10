@@ -17,13 +17,10 @@ export default function LoginPage({ addName }: { addName: (a: string) => void })
   // const isTogether = useIsTogether()
   const { name, password } = useSessionParams()
   const isTogether = !!(name && password)
-  console.log('isTogether', isTogether)
 
   if (!isTogether) {
     navigate('/session/create')
   }
-
-  console.log('redirect', redirect)
 
   return (
     <div className='flex align-center justify-center items-center h-full w-full'>
