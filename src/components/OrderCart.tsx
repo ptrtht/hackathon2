@@ -188,7 +188,7 @@ export default function OrderCart({ nameState, ordersState, addOrder, decrementO
         {/* total $$ */}
         <div className='font-semibold'>
           $
-          {orderKeys.reduce((acc, key) => {
+          {Object.keys(ordersState).reduce((acc, key) => {
             return Number(
               (acc + ordersState[key].quantity * ordersState[key].price + 
                 Object.keys(ordersState[key].modifications ?? {}).reduce((acc, modKey) => 
