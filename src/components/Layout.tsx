@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom'
 import TopBar from './TopBar'
 import OrderCart from './OrderCart'
 
-export default function Layout({ ordersState, addOrder, decrementOrder, nameState }) {
+export default function Layout({ ordersState, addOrder, decrementOrder, nameState, incrementMod, decrementMod }) {
   return (
     <div className='drawer drawer-end h-screen flex-row'>
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -15,7 +15,7 @@ export default function Layout({ ordersState, addOrder, decrementOrder, nameStat
       <div className='drawer-side'>
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className='max-w-[450px] w-full h-full flex align-middle'>
-          <OrderCart nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} checkout={false} />
+          <OrderCart incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} checkout={false} />
         </div>
       </div>
     </div>

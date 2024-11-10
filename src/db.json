@@ -110,6 +110,26 @@
             "modifications": {
               "PPZA001_F007_I001": {
                 "id": "PPZA001_F007_I001",
+                "name": "Bacon",
+                "price": 2.99
+              },
+              "PPZA001_F007_I002": {
+                "id": "PPZA001_F007_I002",
+                "name": "Mushrooms",
+                "price": 1.99
+              },
+              "PPZA001_F007_I003": {
+                "id": "PPZA001_F007_I003",
+                "name": "Boiled Egg",
+                "price": 2.99
+              },
+              "PPZA001_F007_I004": {
+                "id": "PPZA001_F007_I004",
+                "name": "Pineapple",
+                "price": 2.49
+              },
+              "PPZA001_F007_I005": {
+                "id": "PPZA001_F007_I005",
                 "name": "Extra Cheese",
                 "price": 1.99
               }

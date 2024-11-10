@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function OrderCart({ nameState, ordersState, addOrder, decrementOrder, checkout }) {
+export default function OrderCart({ nameState, ordersState, addOrder, decrementOrder, checkout, decrementMod, incrementMod }) {
   const navigate = useNavigate();
   let orderKeys = Object.keys(ordersState).filter((key) => ordersState[key].culprit[nameState] > 0)
 
@@ -23,8 +23,9 @@ export default function OrderCart({ nameState, ordersState, addOrder, decrementO
           {orderKeys.map((key) => {
             const order = ordersState[key]
             return (
-              <li key={key + '2'} className='flex grid grid-cols-7 mt-2'>
-                <span className='col-span-3'>{order.name}</span>
+              <div key={key}>
+              <li key={key} className='flex grid grid-cols-7 mt-2'>
+                <span className={'col-span-3'}>{order.name}</span>
                 <span>{order.price}</span>
                 <span className='flex justify-center gap-2 col-span-2'>
                   <button
@@ -45,11 +46,65 @@ export default function OrderCart({ nameState, ordersState, addOrder, decrementO
                     +
                   </button>
                 </span>
-                <span className='font-semibold'>${order.price * ordersState[key].culprit[nameState]}</span>
+                <span className='font-semibold'>${Number(order.price * ordersState[key].culprit[nameState]).toFixed(2)}</span>
               </li>
+              {Object.keys(order.modifications ?? {}).map((modKey) => {
+                const mod = order.modifications[modKey]
+                return (
+                  <li key={modKey} className='flex grid grid-cols-7 mt-2'>
+                  <p className={'indent-5 col-span-3'}>&#8226; {mod.name}</p>
+                  <span>{mod.price}</span>
+                  <span className='flex justify-center gap-2 col-span-2'>
+                    <button
+                      className='btn btn-xs btn-outline'
+                      onClick={() => {
+                        decrementMod(order, mod)
+                      }}
+                    >
+                      -
+                    </button>
+                    {mod.quantity ?? 0}
+                    <button
+                      className='btn btn-xs btn-outline'
+                      onClick={() => {
+                        incrementMod(order, mod)
+                      }}
+                    >
+                      +
+                    </button>
+                  </span>
+                  <span className='font-semibold'>+{Number(mod.price * (mod.quantity ?? 0)).toFixed(2)}</span>
+                  </li>
+                )
+              })}
+              </div>
             )
           })}
         </ul>
+      </div>
+
+      {/* total individual */}
+      <span className='divider mx-10'></span>
+
+      <div className='flex grid grid-cols-7 px-4'>
+        <div className='col-span-4 '>Your Total:</div>
+        {/* no items */}
+        <div className='col-span-2 flex justify-center'>
+          {orderKeys.reduce((acc, key) => {
+            return acc + ordersState[key].quantity
+          }, 0)}
+        </div>
+        {/* total $$ */}
+        <div className='font-semibold'>
+          $
+          {orderKeys.reduce((acc, key) => {
+            return Number(
+              (acc + ordersState[key].quantity * ordersState[key].price + 
+                Object.keys(ordersState[key].modifications ?? {}).reduce((acc, modKey) => 
+                  acc + ordersState[key].quantity * (ordersState[key].modifications[modKey].quantity ?? 0) * ordersState[key].modifications[modKey].price
+              , 0)).toFixed(2)
+            )}, 0)}
+        </div>
       </div>
 
       {/* list of orders */}
@@ -59,9 +114,10 @@ export default function OrderCart({ nameState, ordersState, addOrder, decrementO
           {Object.keys(ordersState).map((key) => {
             const order = ordersState[key]
             return (
+              <div key={key}>
               <li key={key} className='flex grid grid-cols-7 mt-2'>
-                <span className={`col-span-3 ${order.culprit != nameState ? 'italic ' : ''}`}>{order.name}</span>
-                <span className={`${order.culprit != nameState ? 'italic' : ''}`}>{order.price}</span>
+                <span className={'col-span-3'}>{order.name}</span>
+                <span>{order.price}</span>
                 <span className='flex justify-center gap-2 col-span-2'>
                   <button
                     className='btn btn-xs btn-outline'
@@ -83,6 +139,36 @@ export default function OrderCart({ nameState, ordersState, addOrder, decrementO
                 </span>
                 <span className='font-semibold'>${Number(order.price * order.quantity).toFixed(2)}</span>
               </li>
+              {Object.keys(order.modifications ?? {}).map((modKey) => {
+                const mod = order.modifications[modKey]
+                return (
+                  <li key={modKey} className='flex grid grid-cols-7 mt-2'>
+                  <p className={'indent-5 col-span-3'}>&#8226; {mod.name}</p>
+                  <span>{mod.price}</span>
+                  <span className='flex justify-center gap-2 col-span-2'>
+                    <button
+                      className='btn btn-xs btn-outline'
+                      onClick={() => {
+                        decrementMod(order, mod)
+                      }}
+                    >
+                      -
+                    </button>
+                    {mod.quantity ?? 0}
+                    <button
+                      className='btn btn-xs btn-outline'
+                      onClick={() => {
+                        incrementMod(order, mod)
+                      }}
+                    >
+                      +
+                    </button>
+                  </span>
+                  <span className='font-semibold'>+{Number(mod.price * (mod.quantity ?? 0)).toFixed(2)}</span>
+                  </li>
+                )
+              })}
+              </div>
             )
           })}
         </ul>
@@ -102,9 +188,13 @@ export default function OrderCart({ nameState, ordersState, addOrder, decrementO
         {/* total $$ */}
         <div className='font-semibold'>
           $
-          {Object.keys(ordersState).reduce((acc, key) => {
-            return Number((acc + ordersState[key].quantity * ordersState[key].price).toFixed(2))
-          }, 0)}
+          {orderKeys.reduce((acc, key) => {
+            return Number(
+              (acc + ordersState[key].quantity * ordersState[key].price + 
+                Object.keys(ordersState[key].modifications ?? {}).reduce((acc, modKey) => 
+                  acc + ordersState[key].quantity * (ordersState[key].modifications[modKey].quantity ?? 0) * ordersState[key].modifications[modKey].price
+              , 0)).toFixed(2)
+            )}, 0)}
         </div>
       </div>
 

@@ -61,13 +61,27 @@ export default function App() {
     })
   }
 
-  const incrementModification = (order: orderItemType, modification: modificationType) => {
+  const incrementMod = (order: orderItemType, modification: modificationType) => {
     // if no quantity exists, set it to 1 and add to order
     if (!modification.quantity || modification.quantity === 0) {
-      order.modifications[modification.id].quantiy = 1
+      order.modifications[modification.id].quantity = 1
     } else {
       // if modification already exists, increment quantity
-      order.modifications[modification.id] = modification.quantity + 1
+      order.modifications[modification.id].quantity = order.modifications[modification.id].quantity + 1
+    }
+ 
+    setOrdersState({
+      ...ordersState,
+      [order.id]: order,
+    })
+  }
+
+  const decrementMod = (order: orderItemType, modification: modificationType) => {
+    // if no quantity exists, do nothing
+    if (!modification.quantity || modification.quantity === 0) {
+    } else {
+      // if modification already exists, increment quantity
+      order.modifications[modification.id].quantity = order.modifications[modification.id].quantity - 1
     }
 
     setOrdersState({
@@ -81,11 +95,23 @@ export default function App() {
       const { [order.id]: _, ...rest } = ordersState
       setOrdersState(rest)
     } else {
+      let culprit = {...ordersState[order.id].culprit}
+      if (culprit[nameState] ?? 0 > 0) {
+        --culprit[nameState];
+      } else {
+        for (let key in culprit) {
+          if (culprit[key] > 0) {
+            --culprit[key];
+            break;
+          }
+        }
+      }
       setOrdersState({
         ...ordersState,
         [order.id]: {
           ...ordersState[order.id],
           quantity: ordersState[order.id].quantity - 1,
+          culprit
         },
       })
     }
@@ -101,23 +127,23 @@ export default function App() {
           <Route path='/session/create' element={<CreateSessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
           <Route path='/session/join/:id' element={<JoinSessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
         </Route>
-        <Route path='/restaurants' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+        <Route path='/restaurants' element={<Layout incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<RestaurantList />} />
           <Route
             path='/restaurants/:id'
             element={<RestaurantMenu addOrder={addOrder} ordersState={ordersState} decrementOrder={decrementOrder} />}
           />
         </Route>
-        <Route path='/checkout' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
-          <Route index element={<CheckoutPage nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />} />
+        <Route path='/checkout' element={<Layout incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+          <Route index element={<CheckoutPage incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />} />
         </Route>
-        <Route path='/checkout/success' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+        <Route path='/checkout/success' element={<Layout incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<PaidPage />} />
         </Route>
-        <Route path='/checkout/split' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+        <Route path='/checkout/split' element={<Layout incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<IndOrderCart nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder}/>} />
         </Route>
-        <Route path='/checkout/sortition' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+        <Route path='/checkout/sortition' element={<Layout incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<RoulettePage nameState={nameState} nameListState={nameListState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder}/>} />
         </Route>
       </Routes>

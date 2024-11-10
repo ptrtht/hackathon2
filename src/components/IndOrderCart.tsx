@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 export default function IndOrderCart({ ordersState, addOrder, decrementOrder, nameState }) {
   const navigate = useNavigate();
   let orderKeys = Object.keys(ordersState).filter((key) => ordersState[key].culprit[nameState] > 0)
+  
   return (
 <div className="flex align-center justify-center items-center h-full">
   <div className="card bg-base-200  w-full h-fit md:m-24 mt-24 md:shadow-xl">
