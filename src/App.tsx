@@ -141,7 +141,7 @@ export default function App() {
           <Route index element={<PaidPage />} />
         </Route>
         <Route path='/checkout/split' element={<Layout incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
-          <Route index element={<IndOrderCart nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder}/>} />
+          <Route index element={<IndOrderCart incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder}/>} />
         </Route>
         <Route path='/checkout/sortition' element={<Layout incrementMod={incrementMod} decrementMod={decrementMod} nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<RoulettePage nameState={nameState} nameListState={nameListState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder}/>} />
