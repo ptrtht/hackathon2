@@ -42,7 +42,6 @@ export default function RoulettePage({ ordersState, addOrder, decrementOrder, na
       <h1 className="text-3xl font-bold mb-4">Roulette</h1>
       
       {isAnimating &&
-        <div className="flex items-center justify-center bg-gray-100">
         <style>
           {`
             @keyframes spinRoulette {
@@ -55,14 +54,15 @@ export default function RoulettePage({ ordersState, addOrder, decrementOrder, na
             }
           `}
         </style>
+      }
 
+      <div className="flex items-center justify-center">
         <img
           src="https://images.vexels.com/content/151205/preview/roulette-wheel-icon-102263.png"
           alt="Roulette Wheel"
           className="w-48 h-48 spin-animation" // Applying the custom spin animation class
         />
       </div>
-      }
 
       {/* Displaying the animated name */}
       <div className="p-4 text-2xl font-semibold bg-white shadow-lg rounded-lg daisyui-animation animation-bounce">
@@ -75,7 +75,7 @@ export default function RoulettePage({ ordersState, addOrder, decrementOrder, na
         className="mt-4 btn btn-primary"
         disabled={isAnimating}
       >
-        {isAnimating ? "Shuffling..." : "Start Sortition"}
+        {isAnimating ? "Shuffling..." : "Start Spinning"}
       </button>
 
       {/* Display the full list */}
