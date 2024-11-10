@@ -19,6 +19,7 @@ export default function CheckoutPage({ ordersState, addOrder, decrementOrder }) 
           >Split the bill</button>
           <button
             className="btn btn-primary btn-block"
+            onClick={() => navigate("sortition")}
           >Roulette</button>
         </div>
       </div>

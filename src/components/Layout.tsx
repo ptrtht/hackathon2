@@ -13,7 +13,7 @@ export default function Layout({ ordersState, addOrder, decrementOrder, nameStat
           </div>
       </div>
       <div className='drawer-side'>
-        <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+        <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className='max-w-[450px] w-full h-full flex align-middle'>
           <OrderCart ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} checkout={false} />
         </div>

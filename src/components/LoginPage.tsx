@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { useIsTogether, CroquetReact } from 'react-together'
 
 const { useSessionParams } = CroquetReact
 
-export default function LoginPage({ nameState, setNameState }: { nameState: string; setNameState: (a: string) => void }) {
+export default function LoginPage({ addName }: { addName: (a: string) => void }) {
   const navigate = useNavigate()
+
+  const [nameState, setName] = useState('')
 
   let redirect = '/session/create'
 
@@ -32,13 +35,16 @@ export default function LoginPage({ nameState, setNameState }: { nameState: stri
           </figure>
           <label className='input input-bordered md:w-[50%] flex items-center gap-2'>
             Name
-            <input type='text' className='grow' placeholder='Type your name' onChange={(e) => setNameState(e.target.value)} />
+            <input type='text' className='grow' placeholder='Type your name' value={nameState} onChange={(e) => setName(e.target.value)} />
           </label>
           <div className='card-actions justify-end'>
             <button
               className='btn btn-primary w-full'
               onClick={() => {
-                if (nameState != '') navigate(redirect)
+                if (nameState != '') {
+                  addName(nameState)
+                  navigate(redirect)
+                }
               }}
             >
               Continue

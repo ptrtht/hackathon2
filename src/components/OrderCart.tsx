@@ -6,7 +6,7 @@ export default function OrderCart({ ordersState, addOrder, decrementOrder, check
   return (
     <div className='bg-base-200 rounded-xl min-w-full p-3'>
       {!checkout &&
-        <label for="my-drawer" className="btn btn-block btn-outline drawer-button">
+        <label htmlFor="my-drawer" className="btn btn-block btn-outline drawer-button">
           <i className="pi pi-arrow-left" style={{ fontSize: '1rem' }}></i>
         </label>
       }
@@ -17,32 +17,30 @@ export default function OrderCart({ ordersState, addOrder, decrementOrder, check
           {Object.keys(ordersState).map((key) => {
             const order = ordersState[key]
             return (
-              <>
-                <li key={key} className='flex grid grid-cols-7 mt-2'>
-                  <span className='col-span-3'>{order.name}</span>
-                  <span>{order.price}</span>
-                  <span className='flex justify-center gap-2 col-span-2'>
-                    <button
-                      className='btn btn-xs btn-outline'
-                      onClick={() => {
-                        decrementOrder(order)
-                      }}
-                    >
-                      -
-                    </button>
-                    {order.quantity}
-                    <button
-                      className='btn btn-xs btn-outline'
-                      onClick={() => {
-                        addOrder(order)
-                      }}
-                    >
-                      +
-                    </button>
-                  </span>
-                  <span className='font-semibold'>${Number(order.price * order.quantity).toFixed(2)}</span>
-                </li>
-              </>
+              <li key={key} className='flex grid grid-cols-7 mt-2'>
+                <span className='col-span-3'>{order.name}</span>
+                <span>{order.price}</span>
+                <span className='flex justify-center gap-2 col-span-2'>
+                  <button
+                    className='btn btn-xs btn-outline'
+                    onClick={() => {
+                      decrementOrder(order)
+                    }}
+                  >
+                    -
+                  </button>
+                  {order.quantity}
+                  <button
+                    className='btn btn-xs btn-outline'
+                    onClick={() => {
+                      addOrder(order)
+                    }}
+                  >
+                    +
+                  </button>
+                </span>
+                <span className='font-semibold'>${Number(order.price * order.quantity).toFixed(2)}</span>
+              </li>
             )
           })}
         </ul>
@@ -71,7 +69,7 @@ export default function OrderCart({ ordersState, addOrder, decrementOrder, check
       {/* checkout */}
       {!checkout &&
         <div className='p-4 flex flex-col mx-10'>
-          <label for="my-drawer" className='btn btn-content btn-outline' onClick={() => navigate("/checkout")}>Checkout</label>
+          <label htmlFor="my-drawer" className='btn btn-content btn-outline' onClick={() => navigate("/checkout")}>Checkout</label>
         </div>
       }
     </div>

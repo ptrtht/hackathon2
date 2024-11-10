@@ -14,12 +14,12 @@ export default function TopBar({nameState}: {nameState: string}) {
     <div className="flex-none">
       <ul className="menu menu-horizontal px-1">
         <li>
-          <h2 className='card-title hidden sm:display'>
+          <h2 className='card-title hidden sm:block'>
             {nameState}
           </h2>
         </li>
         <li>
-          <label for="my-drawer" className="btn ml-3 btn-ghost btn-square drawer-button">
+          <label htmlFor="my-drawer" className="btn ml-3 btn-ghost btn-square drawer-button">
             <i className="pi pi-shopping-cart" style={{ fontSize: '1rem' }}></i>
           </label>
         </li>

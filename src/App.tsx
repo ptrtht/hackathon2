@@ -15,6 +15,7 @@ import JoinSessionPage from '@components/JoinSessionPage'
 import CheckoutPage from '@components/CheckoutPage'
 import PaidPage from '@components/PaidPage'
 import IndOrderCart from '@components/IndOrderCart'
+import RoulettePage from '@components/RoulettePage'
 
 export default function App() {
   // const [count, set_count] = useStateTogether('counter_0', 0)
@@ -77,7 +78,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/'>
-          <Route index element={<LoginPage nameState={nameState} setNameState={addName} />} />
+          <Route index element={<LoginPage addName={addName} />} />
         </Route>
         <Route path='/session'>
           <Route path='/session/create' element={<CreateSessionPage nameState={sessionNameState} setNameState={setSessionNameState} />} />
@@ -98,6 +99,9 @@ export default function App() {
         </Route>
         <Route path='/checkout/split' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
           <Route index element={<IndOrderCart nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder}/>} />
+        </Route>
+        <Route path='/checkout/sortition' element={<Layout nameState={nameState}  ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} />}>
+          <Route index element={<RoulettePage nameState={nameState} nameListState={nameListState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
