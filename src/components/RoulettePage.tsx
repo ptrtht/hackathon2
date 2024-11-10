@@ -34,11 +34,36 @@ export default function RoulettePage({ ordersState, addOrder, decrementOrder, na
       setDisplayedName(nameListState[finalIndex]);
     }, 3000);
   };
-
+  
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold mb-4">Sortition</h1>
+    <div className="flex align-center justify-center items-center h-full">
+      <div className="card bg-base-200  w-full h-fit md:m-24 mt-24 md:shadow-xl">
+        <div className="card-body items-center space-y-3">
+      <h1 className="text-3xl font-bold mb-4">Roulette</h1>
       
+      {isAnimating &&
+        <div className="flex items-center justify-center bg-gray-100">
+        <style>
+          {`
+            @keyframes spinRoulette {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+
+            .spin-animation {
+              animation: spinRoulette 3s linear infinite;
+            }
+          `}
+        </style>
+
+        <img
+          src="https://images.vexels.com/content/151205/preview/roulette-wheel-icon-102263.png"
+          alt="Roulette Wheel"
+          className="w-48 h-48 spin-animation" // Applying the custom spin animation class
+        />
+      </div>
+      }
+
       {/* Displaying the animated name */}
       <div className="p-4 text-2xl font-semibold bg-white shadow-lg rounded-lg daisyui-animation animation-bounce">
         {displayedName}
@@ -62,28 +87,9 @@ export default function RoulettePage({ ordersState, addOrder, decrementOrder, na
           ))}
         </ul>
       </div>
+        </div>
+      </div>
     </div>
   );
-  
-  // const navigate = useNavigate();
-  // return (
-  //   <div className="flex align-center justify-center items-center h-full">
-  //     <div className="card bg-base-200  w-full h-fit md:m-24 mt-24 md:shadow-xl">
-  //       <div className="card-body items-center space-y-3">
-  //         <OrderCart ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} checkout={true} />
-  //         <button
-  //           className="btn btn-primary btn-block mt-10"
-  //           onClick={() => navigate("success?m=Thank you for choosing Slicr.")}
-  //         >Pay</button>
-  //         <button
-  //           className="btn btn-primary btn-block"
-  //           onClick={() => navigate("split")}
-  //         >Split the bill</button>
-  //         <button
-  //           className="btn btn-primary btn-block"
-  //         >Roulette</button>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 }
+import React from "react";
