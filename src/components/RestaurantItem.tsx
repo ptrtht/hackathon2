@@ -3,7 +3,7 @@ import * as db from '../db.json'
 
 export default function RestaurantItem({ restaurant }: { restaurant: (typeof db.restaurants)[number] }) {
   return (
-    <div className='card bg-base-100 w-96 shadow-xl'>
+    <div className='card bg-base-100 w-96 max-h-96 shadow-xl'>
       <figure>
         <img src={restaurant.imageUrl} />
       </figure>

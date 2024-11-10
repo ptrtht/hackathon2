@@ -192,7 +192,7 @@
       "restaurantId": "SUSH001",
       "name": "Bad 22h Sushi",
       "cuisine": "Japanese",
-      "imageUrl": "https://images.unsplash.com/photo-1617196701537-7329482cc9fe",
+      "imageUrl": "https://openseauserdata.com/files/dd25141f50111a12d598845d941bcb02.jpg",
       "menu": {
         "food": [
           {
@@ -228,7 +228,7 @@
             "name": "Edamame",
             "description": "Steamed soybeans with salt",
             "price": 4.99,
-            "imageUrl": "https://images.unsplash.com/photo-1542379653-b204d3f77d93"
+            "imageUrl": "https://www.k33kitchen.com/wp-content/uploads/2019/05/k33kitchen_ginger-soy-glazed-edamame_1-750x1000.jpg"
           },
           {
             "id": "SUSH001_F006",
@@ -256,7 +256,7 @@
             "name": "Asahi Beer",
             "description": "Japanese beer",
             "price": 5.99,
-            "imageUrl": "https://images.unsplash.com/photo-1630461394846-d5fbe0399c63"
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/62cefc1fcbf3fb7170a6abc4/4fad0c9c-28b5-4ff5-a098-8336a7b1362e/Asahi+2.jpg"
           },
           {
             "id": "SUSH001_B004",

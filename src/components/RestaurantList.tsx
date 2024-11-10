@@ -4,10 +4,12 @@ import RestaurantItem from './RestaurantItem'
 
 export default function RestaurantList() {
   return (
-    <div className='flex flex-wrap gap-4 p-4'>
-      {db.restaurants.map((restaurant) => (
-        <RestaurantItem key={restaurant.restaurantId} restaurant={restaurant} />
-      ))}
+    <div className='flex justify-center]'>
+      <div className='flex flex-wrap gap-4 p-4'>
+        {db.restaurants.map((restaurant) => (
+          <RestaurantItem key={restaurant.restaurantId} restaurant={restaurant} />
+        ))}
+      </div>
     </div>
   )
 }

@@ -1,14 +1,19 @@
 import { useNavigate } from "react-router-dom";
 
-export default function OrderCart({ ordersState, addOrder, decrementOrder, checkout }) {
+export default function OrderCart({ nameState, ordersState, addOrder, decrementOrder, checkout }) {
   const navigate = useNavigate();
 
   return (
     <div className='bg-base-200 rounded-xl min-w-full p-3'>
       {!checkout &&
+        <>
         <label htmlFor="my-drawer" className="btn btn-block btn-outline drawer-button">
           <i className="pi pi-arrow-left" style={{ fontSize: '1rem' }}></i>
         </label>
+        <div className='card-title justify-center w-full mt-4 sm:hidden'>
+          {nameState}
+        </div>
+        </>
       }
       {/* list of orders */}
       <div className='p-4'>
@@ -18,8 +23,8 @@ export default function OrderCart({ ordersState, addOrder, decrementOrder, check
             const order = ordersState[key]
             return (
               <li key={key} className='flex grid grid-cols-7 mt-2'>
-                <span className='col-span-3'>{order.name}</span>
-                <span>{order.price}</span>
+                <span className={`col-span-3 ${order.culprit != nameState ? 'italic ' : ''}`}>{order.name}</span>
+                <span className={`${order.culprit != nameState ? 'italic' : ''}`}>{order.price}</span>
                 <span className='flex justify-center gap-2 col-span-2'>
                   <button
                     className='btn btn-xs btn-outline'

@@ -8,14 +8,14 @@ export default function Layout({ ordersState, addOrder, decrementOrder, nameStat
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <TopBar nameState={nameState} />
-          <div className='flex-4 pt-16'>
+          <div className='flex-4 pt-16 min-h-full'>
             <Outlet />
           </div>
       </div>
       <div className='drawer-side'>
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className='max-w-[450px] w-full h-full flex align-middle'>
-          <OrderCart ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} checkout={false} />
+          <OrderCart nameState={nameState} ordersState={ordersState} addOrder={addOrder} decrementOrder={decrementOrder} checkout={false} />
         </div>
       </div>
     </div>
