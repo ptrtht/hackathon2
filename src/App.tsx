@@ -6,6 +6,7 @@ import RestaurantMenu from '@components/Menu'
 import Layout from '@components/Layout'
 import { useStateTogether } from 'react-together'
 import * as db from './db.json'
+import 'primeicons/primeicons.css';
 
 import LoginPage from '@components/LoginPage'
 import { useState } from 'react'
