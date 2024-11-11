@@ -28,7 +28,7 @@ export default function LoginPage({ addName }: { addName: (a: string) => void })
         <div className='card-body items-center'>
           <h1 className='card-title w-full justify-center'>Welcome to</h1>
           <figure>
-            <img src='https://media.discordapp.net/attachments/1304748717076774912/1304857526164131961/Untitled.png?ex=67323c45&is=6730eac5&hm=06886976f4b03a304d2c6c67cd4a7ca67b852e5f94ff4adda27cbbac63816921&=&format=webp&quality=lossless' />
+            <img src='https://i.imgur.com/dwMXdHb.png' />
           </figure>
           <label className='input input-bordered md:w-[50%] flex items-center gap-2'>
             Name

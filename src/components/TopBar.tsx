@@ -17,7 +17,7 @@ export default function TopBar({nameState}: {nameState: string}) {
       <Link to="/" className="btn btn-ghost text-xl">
       <img 
         className='max-w-full max-h-full'
-      src='https://media.discordapp.net/attachments/1304748717076774912/1304857526164131961/Untitled.png?ex=67323c45&is=6730eac5&hm=06886976f4b03a304d2c6c67cd4a7ca67b852e5f94ff4adda27cbbac63816921&=&format=webp&quality=lossless' />
+        src='https://i.imgur.com/dwMXdHb.png' />
       </Link>
       <Link to="/restaurants" className='btn btn-ghost card-title hidden sm:flex'>
         Restaurants

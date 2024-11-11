@@ -14,7 +14,7 @@ export default function CheckoutPage() {
           <p className="card-body justify-left">Your order has been placed, it will soon be arriving at the specified location.</p>
           <figure>
             <img
-              src="https://media.discordapp.net/attachments/1304748717076774912/1304917866386292846/rect2.png?ex=673122f7&is=672fd177&hm=64bcd64cc20652201a32d64bd601e62709613b7fa4ab90497c91cde1ecede59f&=&format=webp&quality=lossless&width=556&height=437"
+              src="https://i.imgur.com/J5cb4Qk.png"
             />
           </figure>
           <p className="card-body justify-left">You can check your order progress in "my orders".</p>
